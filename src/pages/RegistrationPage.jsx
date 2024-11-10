@@ -15,21 +15,20 @@ const RegistrationPage = () => {
             />
             <div>
               <h1 className="mb-3 text-4xl font-bold lg:text-[40px]">
-                Facehook
+               u<span className="text-textBlue">Alumni</span>
               </h1>
-              <p className="max-w-[452px] text-gray-400/95 lg:text-lg">
-                Create a social media app with features like, showing the post,
-                post details, reactions, comments and profile.
+              <p className="max-w-[452px] text-gray-600/95 lg:text-lg">
+                A website for versity alumni to share their insightful thoughts thoughout the memebers.              
               </p>
             </div>
           </div>
           <div className="card">
             <RegistrationForm />
             <div className="py-4 lg:py-4">
-              <p className="text-center text-xs text-gray-600/95 lg:text-sm mx-2">
+              <p className="text-center text-sm text-gray-600/95  mx-2">
                 Already have an account?
                 <Link
-                  className="mx-2 hover:text-lwsGreen text-white transition-all hover:underline"
+                  className="mx-2 hover:text-textBlue text-white transition-all hover:underline"
                   to="/"
                 >
                   Login

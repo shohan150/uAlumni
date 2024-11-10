@@ -48,7 +48,7 @@ const LoginForm = () => {
 
   return (
     <form
-      className="border-b border-[#3F3F3F] pb-10 lg:pb-[60px]"
+      className="border-b border-gray-200 pb-10 lg:pb-[60px]"
       // onSubmit e handleSubmit er vitor, form submit hle kon function ta execute korbe seta bole dite hobe. ei submitForm function ta parameter e formData k pabe (automatically). 
       onSubmit={handleSubmit(submitForm)}
     >
@@ -77,7 +77,7 @@ const LoginForm = () => {
             },
           })}
           className={`auth-input ${
-            errors.password ? "border-red-500" : "border-gray-200"
+            errors.password ? "border-red-600" : "border-gray-200"
           }`}
           type="password"
           name="password"
@@ -86,7 +86,9 @@ const LoginForm = () => {
       </Field>
       <p>{errors?.root?.random?.message}</p>
       <Field>
-        <button className="auth-input bg-lwsGreen font-bold text-deepDark transition-all hover:opacity-90">
+        <button 
+          className="w-full font-bold text-gray-200 bg-textBlue transition-all mt-4 p-2 xl:p-3 rounded border-0 duration-200 hover:-translate-y-[2px]"
+          type="submit">
           Login
         </button>
       </Field>

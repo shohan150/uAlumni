@@ -14,7 +14,7 @@ const RegistrationForm = () => {
   } = useForm();
 
   const submitForm = async (formData) => {
-    //  console.log(formData);
+      console.log(formData);
     try {
       let response = await axios.post(
         `${import.meta.env.VITE_SERVER_BASE_URL}/auth/register`,
@@ -46,7 +46,7 @@ const RegistrationForm = () => {
           className={`auth-input ${
             errors.firstName ? "border-red-500" : "border-gray-200"
           }`}
-          type="firstName"
+          type="text"
           name="firstName"
           id="firstName"
         />
@@ -57,9 +57,22 @@ const RegistrationForm = () => {
           className={`auth-input ${
             errors.lastName ? "border-red-500" : "border-gray-200"
           }`}
-          type="lastName"
+          type="text"
           name="lastName"
           id="lastName"
+        />
+      </Field>
+      <Field label="Batch No." error={errors.batchNo}>
+        <input
+          {...register("batchNo", {
+            required: "Please provide your batch number",
+          })}
+          className={`auth-input ${
+            errors.batchNo ? "border-red-500" : "border-gray-200"
+          }`}
+          type="number"
+          name="batchNo"
+          id="batchNo"
         />
       </Field>
       <Field label="Email" error={errors.email}>
@@ -93,7 +106,7 @@ const RegistrationForm = () => {
       </Field>
       <p>{errors?.root?.random?.message}</p>
       <button
-        className="auth-input bg-lwsGreen font-bold text-deepDark transition-all hover:opacity-90"
+        className="w-full font-bold text-gray-200 bg-textBlue transition-all mt-4 p-2 xl:p-3 rounded border-0 duration-200 hover:-translate-y-[2px]"
         type="submit"
       >
         Register
