@@ -73,9 +73,11 @@ const PostEntry = ({ onCreate }) => {
               <h6 className="text-lg lg:text-xl">
                 {user?.firstName} {user?.lastName}
               </h6>
+
+              {/* wanted to categorize postes here. that public posts can be seen even if user not logged in. 'members' posts can only be seen by logged in users. but the server is developed in suach a way that it only gives posts if authToken is provided. so, that couldn't be achieved. to do that i would have to change the backend code. */}
               <select {...register("permission")} className="text-sm text-gray-200 bg-deepBg focus:border-none focus:outline-none w-20">
                 <option value="public" className="bg-white text-textBlue font-semibold">Public</option>
-                <option value="Members Only" className="bg-white text-textBlue font-semibold">Members</option>
+                <option value="members" className="bg-white text-textBlue font-semibold">Members</option>
               </select>
             </div>
           </div>
