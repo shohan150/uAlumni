@@ -66,6 +66,7 @@ const PostHeader = ({ post }) => {
               <span className="text-sm text-textBlue ">Posted {`${getDateDifferenceFromNow(
                 post?.createAt
               )} ago`}</span>
+              <span className="text-sm text-textBlue ">(Public)</span>
             </div>
           </div>
 

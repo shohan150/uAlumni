@@ -40,7 +40,7 @@ const Bio = () => {
     <div className="mt-4 flex items-start gap-2 lg:mt-6">
       <div className="flex-1">
         {!editMode ? (
-          <p className="leading-[188%] text-gray-400 lg:text-lg">
+          <p className="leading-[188%] text-textBlye lg:text-lg">
             {state?.user?.bio}
           </p>
         ) : (
