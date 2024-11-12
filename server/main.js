@@ -8,6 +8,9 @@ const cors = require("cors");
 const app = jsonServer.create();
 const router = jsonServer.router("./database/db.json");
 
+// app.use(cors({ credentials: true, origin: true }));
+//allow all origins
+app.use(cors());
 app.use(cors({ credentials: true, origin: true }));
 app.use(express.static(__dirname + "/public"));
 app.use("/uploads", express.static("uploads"));
