@@ -11,6 +11,8 @@ const router = jsonServer.router("./database/db.json");
 // app.use(cors({ credentials: true, origin: true }));
 //allow all origins
 app.use(cors());
+app.options('*', cors()); // This allows preflight requests from all origins
+
 
 app.use(express.static(__dirname + "/public"));
 app.use("/uploads", express.static("uploads"));
