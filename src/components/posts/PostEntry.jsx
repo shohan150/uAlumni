@@ -13,6 +13,7 @@ const PostEntry = ({ onCreate }) => {
   const { api } = useAxios();
   const { state: profile } = useProfile();
 
+  //because the profile gets value when one goes to the profile page. but when the user comes directly to the home page, there is no profile value. In that case take value from the auth. but if user goes to profile page, updates his bio, image etc. then the profile value will be updated and that updated value should be used on the homepage.
   const user = profile?.user ?? auth?.user;
 
   const {
@@ -31,7 +32,7 @@ const PostEntry = ({ onCreate }) => {
     try {
       const response = await api.post(
         `${import.meta.env.VITE_SERVER_BASE_URL}/posts`,
-        { formData }        
+        { formData }
       );
 
       if (response.status === 200) {
@@ -69,7 +70,7 @@ const PostEntry = ({ onCreate }) => {
                 {user?.firstName} {user?.lastName}{" "}
               </h6>
 
-              <select className="text-sm text-gray-200 bg-deepBg focus:border-none focus:outline-none w-20">
+              <select {...register("permission")} className="text-sm text-gray-200 bg-deepBg focus:border-none focus:outline-none w-20">
                 <option className="bg-white text-textBlue font-semibold" value="public">Public</option>
                 <option className="bg-white text-textBlue font-semibold"  value="Members Only">Members</option>
               </select>
@@ -83,7 +84,9 @@ const PostEntry = ({ onCreate }) => {
             <img src={AddPhoto} alt="Add Photo" />
             Add Photo
           </label>
-          <input type="file" name="photo" id="photo" className="hidden" />
+          <input 
+          {...register("image")}
+          type="file" name="photo" id="photo" className="hidden" />
         </div>
         <Field label="" error={errors.content}>
           <textarea

@@ -1,3 +1,4 @@
+const { permission } = require("process");
 const { PostService } = require("../services/post.service");
 const getAuthUser = require("../util/getAuthUser");
 const crypto = require("crypto");
@@ -20,6 +21,7 @@ const createNewPost = (req, res) => {
     content: "",
     image: null,
     postType: "text",
+    permission: "public",
     author: {},
     comments: [],
     likes: [],
@@ -32,13 +34,14 @@ const createNewPost = (req, res) => {
   const post = {
     postType: req?.file?.filename ? "image" : "text",
     content: req?.body?.formData?.content || "",
+    permission : req?.body?.formData?.permission,
     image: req?.file?.filename ? `uploads/posts/${req?.file?.filename}` : null,
     author: { id, name, avatar },
   };
 
   const data = Object.assign({}, postSchema, post);
 
-  db.get("posts").push(data).write();
+  db.get("posts").unshift(data).write();
 
   res.json(data);
 };
