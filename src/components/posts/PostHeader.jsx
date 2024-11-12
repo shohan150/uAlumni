@@ -51,21 +51,24 @@ const PostHeader = ({ post }) => {
   };
   return (
     <header className="flex items-center justify-between gap-4">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 w-full">
         <img
           className="max-w-10 max-h-10 rounded-full lg:max-h-[58px] lg:max-w-[58px]"
-          src={avatarURL}
+          src={avatarURL }
           alt="avatar"
         />
-        <div>
-          <h6 className="text-lg lg:text-xl">{post?.author?.name}</h6>
-          <div className="flex items-center gap-1.5">
-            <img src={TimeIcon} alt="time" />
-            <span className="text-sm text-gray-400 lg:text-base">{`${getDateDifferenceFromNow(
-              post?.createAt
-            )} ago`}</span>
-            <span className="text-sm text-gray-400 lg:text-base"></span>
+        <div className="flex-1">
+          <h6 className="text-lg lg:text-xl">{post?.author?.name} <span className="text-lightBg text-sm">(Batch 2)</span> </h6>
+          <div className="flex items-center justify-between text-xs">
+            <h6 className="">Business Analyst </h6>
+            <div className="flex items-center gap-1.5">
+              <img src={TimeIcon} alt="time" />
+              <span className="text-sm text-textBlue ">Posted {`${getDateDifferenceFromNow(
+                post?.createAt
+              )} ago`}</span>
+            </div>
           </div>
+
         </div>
       </div>
 
@@ -78,7 +81,7 @@ const PostHeader = ({ post }) => {
 
         {showAction && (
           <div className="action-modal-container">
-            <button className="action-menu-item hover:text-lwsGreen">
+            <button className="action-menu-item hover:text-textBlue">
               <img src={EditIcon} alt="Edit" />
               Edit
             </button>

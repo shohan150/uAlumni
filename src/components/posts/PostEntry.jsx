@@ -25,11 +25,13 @@ const PostEntry = ({ onCreate }) => {
   const handlePostSubmit = async (formData) => {
     //  console.log(formData);
     dispatch({ type: actions.post.DATA_FETCHING });
+    console.log(formData);
+
 
     try {
       const response = await api.post(
         `${import.meta.env.VITE_SERVER_BASE_URL}/posts`,
-        { formData }
+        { formData }        
       );
 
       if (response.status === 200) {
@@ -67,7 +69,10 @@ const PostEntry = ({ onCreate }) => {
                 {user?.firstName} {user?.lastName}{" "}
               </h6>
 
-              <span className="text-sm text-gray-400 lg:text-base">Public</span>
+              <select className="text-sm text-gray-200 bg-deepBg focus:border-none focus:outline-none w-20">
+                <option className="bg-white text-textBlue font-semibold" value="public">Public</option>
+                <option className="bg-white text-textBlue font-semibold"  value="Members Only">Members</option>
+              </select>
             </div>
           </div>
 
@@ -88,12 +93,12 @@ const PostEntry = ({ onCreate }) => {
             name="content"
             id="content"
             placeholder="Share your thoughts..."
-            className="h-[120px] w-full bg-transparent focus:outline-none lg:h-[160px]"
+            className="h-[120px] w-full bg-transparent focus:outline-none placeholder:text-gray-200/60 lg:h-[160px]"
           ></textarea>
         </Field>
-        <div className="border-t border-[#3F3F3F] pt-4 lg:pt-6">
+        <div className=" pt-4 lg:pt-6">
           <button
-            className="auth-input bg-lwsGreen font-bold text-deepDark transition-all hover:opacity-90"
+            className="auth-input bg-textBlue font-bold text-deepDark transition-all hover:-translate-y-[2px]"
             type="submit"
           >
             Post

@@ -9,6 +9,7 @@ import useAxios from "../../hooks/useAxios";
 const PostAction = ({ post, commentCount }) => {
   const { auth } = useAuth();
   const [liked, setLiked] = useState(post?.likes?.includes(auth?.user?.id));
+  const [likeCount, setLikeCount] = useState(post?.likes?.length);
   const { api } = useAxios();
 
   const handleLike = async () => {
@@ -18,18 +19,19 @@ const PostAction = ({ post, commentCount }) => {
       );
 
       if (response.status === 200) {
-        setLiked(true);
+        setLiked(!liked);
+        setLikeCount(liked ? likeCount - 1 : likeCount + 1);
       }
     } catch (error) {
       console.error(error);
-      setLiked(false);
+      // setLiked(!liked);
     }
   };
 
   return (
     <div className="flex items-center justify-between py-6 lg:px-10 lg:py-8">
       <button
-        className="flex-center gap-2 text-xs font-bold text-[#B8BBBF] hover:text-white lg:text-sm"
+        className="flex-center gap-2 text-xs font-bold text-gray-200 hover:text-white lg:text-sm"
         onClick={handleLike}
       >
         <img
@@ -37,7 +39,9 @@ const PostAction = ({ post, commentCount }) => {
           src={liked ? LikeFilledIcon : LikeIcon}
           alt="Like"
         />
-        {!liked && <span>Like</span>}
+        <span>{liked ? "Liked" : "Like"}</span>
+        <span>({likeCount})</span>
+
       </button>
 
       <button className="icon-btn space-x-2 px-6 py-3 text-xs lg:px-12 lg:text-sm">

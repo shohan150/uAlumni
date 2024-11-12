@@ -44,7 +44,7 @@ const register = (reqBody, db) => {
     firstName,
     lastName,
     batchNo,
-    avatar: null,
+    avatar: "uploads/avatar/person.jpg",
     email,
   };
 

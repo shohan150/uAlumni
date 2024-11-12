@@ -3,10 +3,12 @@ import { useAuth } from "../../hooks/useAuth";
 import useAxios from "../../hooks/useAxios";
 import PostCommentList from "./PostCommentList";
 
+
 const PostComments = ({ post }) => {
   const { auth } = useAuth();
   const [comments, setComments] = useState(post?.comments);
   const [comment, setComment] = useState("");
+  const [showAllComments, setShowAllComments] = useState(false);
   const { api } = useAxios();
 
   const addComment = async (event) => {
@@ -52,10 +54,12 @@ const PostComments = ({ post }) => {
         </div>
       </div>
       <div className="mt-4">
-        <button className="text-gray-300 max-md:text-sm">All Comment ▾</button>
+        <button className="text-gray-200 max-md:text-sm" onClick={() => setShowAllComments(!showAllComments)}>
+          {comments?.length > 3 ? showAllComments ? "All Comments" : "Show All Comments" : "All Comments"}
+        </button>
       </div>
 
-      <PostCommentList comments={comments} />
+      <PostCommentList comments={comments} showAllComments={showAllComments} />
     </div>
   );
 };
