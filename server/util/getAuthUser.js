@@ -2,7 +2,7 @@ module.exports = (req) => {
   try {
     const { db } = req.app;
     console.log(req?.claims?.email);
-    const { id, email, firstName, lastName, avatar } = db.get("users").find({ email: req?.claims?.email }).value();
+    const { id, email, firstName, lastName, avatar, batchNo, desg } = db.get("users").find({ email: req?.claims?.email }).value();
 
     return {
       id,
@@ -10,6 +10,8 @@ module.exports = (req) => {
       firstName,
       lastName,
       avatar,
+      batchNo,
+      desg,
       name: `${firstName} ${lastName}`,
     };
   } catch (e) {

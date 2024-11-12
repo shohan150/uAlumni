@@ -7,6 +7,9 @@ export const getDateDifferenceFromNow = (fromDate) => {
   let minuteDifference = Math.floor(difference / 60);
   difference -= minuteDifference * 60;
 
+  //if posted just now (less than a minute) than show 'just now'
+  if (minuteDifference == 0 ) return "Just Now";
+
   // if the post is too old, then return the day only. 
   let dayDifference = Math.floor(hourDifference/24);
   if (dayDifference > 1) return `${dayDifference} days`;

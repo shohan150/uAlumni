@@ -1,11 +1,39 @@
 {
   "posts": [
     {
-      "id": "d2989fef-9ee6-4e28-91d7-17dfb927ffa3",
-      "content": "jnnnn",
+      "id": "3ad0d149-62cd-4c20-8513-5ac4e91b83da",
+      "content": "puck u 222\r\n",
       "image": null,
       "postType": "text",
-      "permission": "Members Only",
+      "permission": "public",
+      "author": {
+        "id": "ad6ca1be-e8fe-4515-9f65-56ca0ba57f20",
+        "name": "shohan j",
+        "avatar": "uploads/avatar/avatar-1731405406305-133014976.png",
+        "batchNo": "2",
+        "desg": "hiix"
+      },
+      "comments": [
+        {
+          "id": "bf541a7c-6af5-4363-a8fc-ecbdf8c97c96",
+          "comment": "n",
+          "createdAt": "2024-11-12T11:09:05.163Z",
+          "author": {
+            "id": "ad6ca1be-e8fe-4515-9f65-56ca0ba57f20",
+            "name": "shohan j",
+            "avatar": "uploads/avatar/avatar-1731405406305-133014976.png"
+          }
+        }
+      ],
+      "likes": [],
+      "createAt": "2024-11-12T11:04:54.038Z"
+    },
+    {
+      "id": "092997c3-ffea-42c6-b1e1-558292961905",
+      "content": "the puck bitch",
+      "image": null,
+      "postType": "text",
+      "permission": "public",
       "author": {
         "id": "ad6ca1be-e8fe-4515-9f65-56ca0ba57f20",
         "name": "shohan j",
@@ -13,7 +41,7 @@
       },
       "comments": [],
       "likes": [],
-      "createAt": "2024-11-12T10:05:25.043Z"
+      "createAt": "2024-11-12T11:00:10.670Z"
     },
     {
       "id": "114d6b94-fc94-4d3c-ad86-720a18eaf437",
@@ -260,7 +288,8 @@
       "batchNo": "2",
       "avatar": "uploads/avatar/avatar-1731405406305-133014976.png",
       "email": "iamdummy37@gmail.com",
-      "bio": "test bio\n"
+      "bio": "test bio\n",
+      "desg": "hiix"
     },
     {
       "id": "42c7846c-0d37-40a6-9ebf-346f8bd944d2",

@@ -47,7 +47,7 @@ const PostComments = ({ post }) => {
         <div className="flex-1">
           <input
             type="text"
-            className="h-8 w-full rounded-full bg-lighterDark px-4 text-xs focus:outline-none sm:h-[38px]"
+            className="h-8 w-full rounded-full bg-lighterDark px-4 text-xs text-textBlue focus:outline-none sm:h-[38px]"
             name="post"
             id="post"
             value={comment}
