@@ -9,8 +9,12 @@ const app = jsonServer.create();
 const router = jsonServer.router("./database/db.json");
 
 // app.use(cors({ credentials: true, origin: true }));
-//allow all origins
-app.use(cors());
+// Configure CORS to allow all origins and handle preflight requests
+app.use(cors({
+  origin: '*',  // Allow all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Headers allowed in requests
+}));
 app.options('*', cors()); // This allows preflight requests from all origins
 
 
