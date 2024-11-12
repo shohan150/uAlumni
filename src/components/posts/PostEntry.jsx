@@ -13,7 +13,6 @@ const PostEntry = ({ onCreate }) => {
   const { api } = useAxios();
   const { state: profile } = useProfile();
 
-  //because the profile gets value when one goes to the profile page. but when the user comes directly to the home page, there is no profile value. In that case take value from the auth. but if user goes to profile page, updates his bio, image etc. then the profile value will be updated and that updated value should be used on the homepage.
   const user = profile?.user ?? auth?.user;
 
   const {
@@ -24,15 +23,21 @@ const PostEntry = ({ onCreate }) => {
   } = useForm();
 
   const handlePostSubmit = async (formData) => {
-    //  console.log(formData);
     dispatch({ type: actions.post.DATA_FETCHING });
-    console.log(formData);
 
+    // Initialize FormData and append fields
+    const data = new FormData();
+    data.append("permission", formData.permission);
+    data.append("content", formData.content);
+    if (formData.image[0]) {
+      data.append("image", formData.image[0]); // Appending only the first file
+    }
 
     try {
       const response = await api.post(
         `${import.meta.env.VITE_SERVER_BASE_URL}/posts`,
-        { formData }
+        data, 
+        { headers: { "Content-Type": "multipart/form-data" } } 
       );
 
       if (response.status === 200) {
@@ -40,14 +45,13 @@ const PostEntry = ({ onCreate }) => {
           type: actions.post.DATA_CREATED,
           data: response.data,
         });
-        // Close this UI
         onCreate();
       }
     } catch (error) {
       console.error(error);
       dispatch({
         type: actions.post.DATA_FETCH_ERROR,
-        error: response.error,
+        error: error.message,
       });
     }
   };
@@ -57,7 +61,7 @@ const PostEntry = ({ onCreate }) => {
       <h6 className="mb-3 text-center text-lg font-bold lg:text-xl">
         Create Post
       </h6>
-      <form onSubmit={handleSubmit(handlePostSubmit)}>
+      <form onSubmit={handleSubmit(handlePostSubmit)} encType="multipart/form-data">
         <div className="mb-3 flex items-center justify-between gap-2 lg:mb-6 lg:gap-4">
           <div className="flex items-center gap-3">
             <img
@@ -67,39 +71,33 @@ const PostEntry = ({ onCreate }) => {
             />
             <div>
               <h6 className="text-lg lg:text-xl">
-                {user?.firstName} {user?.lastName}{" "}
+                {user?.firstName} {user?.lastName}
               </h6>
-
               <select {...register("permission")} className="text-sm text-gray-200 bg-deepBg focus:border-none focus:outline-none w-20">
-                <option className="bg-white text-textBlue font-semibold" value="public">Public</option>
-                <option className="bg-white text-textBlue font-semibold"  value="Members Only">Members</option>
+                <option value="public" className="bg-white text-textBlue font-semibold">Public</option>
+                <option value="Members Only" className="bg-white text-textBlue font-semibold">Members</option>
               </select>
             </div>
           </div>
 
-          <label
-            className="btn-primary cursor-pointer !text-gray-100"
-            htmlFor="photo"
-          >
+          <label className="btn-primary cursor-pointer !text-gray-100" htmlFor="photo">
             <img src={AddPhoto} alt="Add Photo" />
             Add Photo
           </label>
-          <input 
-          {...register("image")}
-          type="file" name="photo" id="photo" className="hidden" />
+          <input {...register("image")} type="file" name="image" id="photo" className="hidden" />
         </div>
+
         <Field label="" error={errors.content}>
           <textarea
-            {...register("content", {
-              required: "Adding some text is mandatory!",
-            })}
+            {...register("content")}
             name="content"
             id="content"
             placeholder="Share your thoughts..."
             className="h-[120px] w-full bg-transparent focus:outline-none placeholder:text-gray-200/60 lg:h-[160px]"
           ></textarea>
         </Field>
-        <div className=" pt-4 lg:pt-6">
+        
+        <div className="pt-4 lg:pt-6">
           <button
             className="auth-input bg-textBlue font-bold text-deepDark transition-all hover:-translate-y-[2px]"
             type="submit"

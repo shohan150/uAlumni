@@ -7,6 +7,7 @@ import { actions } from "../../actions";
 
 const ProfileImage = () => {
   const { state, dispatch } = useProfile();
+  
   const { api } = useAxios();
   const fileUploaderRef = useRef();
 

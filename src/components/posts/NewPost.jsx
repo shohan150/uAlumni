@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
+import { useProfile } from "../../hooks/useProfile";
 import PostEntry from "./PostEntry";
 
 const NewPost = () => {
   const [showPostEntry, setShowPostEntry] = useState(false);
   const { auth } = useAuth();
+  const {state} = useProfile();
+  const imgUrl = state?.user?.avatar ?? auth?.user?.avatar;
 
   return (
     <>
@@ -14,9 +17,9 @@ const NewPost = () => {
         <div className="card">
           <div className="flex-center mb-3 gap-2 lg:gap-4">
             <img
-              className="max-w-10 max-h-10 rounded-full lg:max-h-[58px] lg:max-w-[58px]"
+              className="w-10 h-10 rounded-full lg:h-12 lg:w-12"
               src={`${import.meta.env.VITE_SERVER_BASE_URL}/${
-                auth?.user?.avatar
+                imgUrl
               }`}
               alt="avatar"
             />

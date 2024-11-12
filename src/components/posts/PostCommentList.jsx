@@ -6,7 +6,7 @@ const PostCommentList = ({ comments, showAllComments }) => {
         showingComments.map((comment, i) => (
           <div className="flex items-center gap-3 pt-3" key={comment.id}>
             <img
-              className="max-w-6 max-h-6 rounded-full"
+              className="w-6 h-6 rounded-full"
               src={`${import.meta.env.VITE_SERVER_BASE_URL}/${
                 comment?.author?.avatar
               }`}

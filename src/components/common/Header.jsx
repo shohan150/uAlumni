@@ -3,9 +3,14 @@ import Logout from "../auth/LogOut";
 import { useAuth } from "../../hooks/useAuth";
 
 import { Link } from "react-router-dom";
+import { useProfile } from "../../hooks/useProfile";
 
 const Header = () => {
   const { auth } = useAuth();
+  const {state} = useProfile();
+
+  const imgUrl = state?.user?.avatar ?? auth?.user?.avatar;
+
   return (
     <nav className="sticky top-0 z-50 border-b border-[#3F3F3F] bg-textBlue py-4">
       <div className="container flex items-center justify-between gap-6">
@@ -28,9 +33,9 @@ const Header = () => {
               {auth?.user?.firstName}
             </span>
             <img
-              className="max-h-[32px] max-w-[32px] lg:max-h-[44px] lg:max-w-[44px]"
+              className="h-[32px] w-[32px] lg:h-[44px] lg:w-[44px] rounded-full"
               src={`${import.meta.env.VITE_SERVER_BASE_URL}/${
-                auth?.user?.avatar
+                imgUrl
               }`}
               alt={auth?.user?.firstName}
             />

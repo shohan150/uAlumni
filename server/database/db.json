@@ -1,19 +1,19 @@
 {
   "posts": [
     {
-      "id": "acd6808e-bea2-4391-91eb-5ec4614a8011",
-      "content": "check may be",
+      "id": "d2989fef-9ee6-4e28-91d7-17dfb927ffa3",
+      "content": "jnnnn",
       "image": null,
       "postType": "text",
-      "permission": "public",
+      "permission": "Members Only",
       "author": {
         "id": "ad6ca1be-e8fe-4515-9f65-56ca0ba57f20",
         "name": "shohan j",
-        "avatar": null
+        "avatar": "uploads/avatar/avatar-1731405406305-133014976.png"
       },
       "comments": [],
       "likes": [],
-      "createAt": "2024-11-12T07:17:02.858Z"
+      "createAt": "2024-11-12T10:05:25.043Z"
     },
     {
       "id": "114d6b94-fc94-4d3c-ad86-720a18eaf437",
@@ -258,9 +258,9 @@
       "firstName": "shohan",
       "lastName": "j",
       "batchNo": "2",
-      "avatar": null,
+      "avatar": "uploads/avatar/avatar-1731405406305-133014976.png",
       "email": "iamdummy37@gmail.com",
-      "bio": "test"
+      "bio": "test bio\n"
     },
     {
       "id": "42c7846c-0d37-40a6-9ebf-346f8bd944d2",
