@@ -8,7 +8,13 @@ const MyPosts = () => {
   return (
     <>
       <h4 className="mt-6 text-2xl lg:mt-8 text-textBlue font-bold">Your Posts</h4>
-      <PostList posts={posts} />
+      {
+        posts?.length > 0 ? (
+          <PostList posts={posts} />
+        ) : (
+          <p className="text-gray-600 mt-4">You don&apos;t have any posts yet.</p>
+        )
+      }
     </>
   );
 };
