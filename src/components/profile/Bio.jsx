@@ -41,7 +41,7 @@ const Bio = () => {
       <div className="flex-1">
         {!editMode ? (
           <p className="leading-[188%] text-textBlye lg:text-lg">
-            {state?.user?.bio}
+            {state?.user?.bio ? state?.user?.bio : "Enter your bio"}
           </p>
         ) : (
           <textarea
@@ -58,6 +58,7 @@ const Bio = () => {
           className="flex-center h-7 w-7 rounded-full"
           onClick={() => setEditMode(true)}
         >
+
           <img src={EditIcon} alt="Edit" />
         </button>
       ) : (
